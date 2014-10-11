@@ -1,0 +1,143 @@
+defmodule Asa.MotorMovementTest do
+  use ExUnit.Case
+  alias Asa.StepperMotorMovements, as: SMM
+
+  test "get next step - 0 +" do
+    state = %{step: 0, spr: 200}
+
+    assert SMM.getNextStep(state,1) == 1
+  end
+
+  test "get next step - 0 -" do
+    state = %{step: 0, spr: 200}
+
+    assert SMM.getNextStep(state, -1) == 199 
+  end
+
+  test "get next step - max +" do
+    state = %{step: 199, spr: 200}
+
+    assert SMM.getNextStep(state, 1) == 0
+  end
+
+  test "get next step - max -" do
+    state = %{step: 199, spr: 200}
+
+    assert SMM.getNextStep(state, -1) == 198
+  end
+
+  test "get next step - middle +" do
+    state = %{step: 100, spr: 200}
+
+    assert SMM.getNextStep(state, 1) == 101
+  end
+
+  test "get next step - middle -" do
+    state = %{step: 100, spr: 200}
+
+    assert SMM.getNextStep(state, -1) == 99
+  end
+
+  test "get direction - forward" do
+    #state, newStep, steps
+    state = %{step: 0, spr: 200}
+    newStep = 50
+    steps = 50
+    expDir = 1
+
+    assert SMM.getDirection(state,newStep,steps) == expDir
+  end
+
+  test "get direction - backward" do
+    #state, newStep, steps
+    state = %{step: 25, spr: 200}
+    newStep = 10
+    steps = 15
+    expDir = -1
+
+    assert SMM.getDirection(state,newStep,steps) == expDir
+  end
+
+  test "get direction - crossOver down" do
+    #state, newStep, steps
+    state = %{step: 10, spr: 200}
+    newStep = 180
+    steps = 30
+    expDir = -1
+
+    assert SMM.getDirection(state,newStep,steps) == expDir
+  end
+
+  test "get direction - crossOver up" do
+    #state, newStep, steps
+    state = %{step: 175, spr: 200}
+    newStep = 25
+    steps = 50
+    expDir = 1
+
+    assert SMM.getDirection(state,newStep,steps) == expDir
+  end
+
+  test "get steps - forward" do
+    #state, newStep, steps
+    state = %{step: 0, spr: 200}
+    newStep = 25
+    steps = 25
+
+    assert SMM.getSteps(state,newStep) == steps
+  end
+
+  test "get steps - backward" do
+    #state, newStep, steps
+    state = %{step: 75, spr: 200}
+    newStep = 40
+    steps = 35
+
+    assert SMM.getSteps(state,newStep) == steps
+  end
+
+  test "get steps - crossOver up" do
+    #state, newStep, steps
+    state = %{step: 175, spr: 200}
+    newStep = 25
+    steps = 50
+
+    assert SMM.getSteps(state,newStep) == steps
+  end
+
+  test "get steps - crossOver down" do
+    #state, newStep, steps
+    state = %{step: 13, spr: 200}
+    newStep = 195
+    steps = 18
+
+    assert SMM.getSteps(state,newStep) == steps
+  end
+
+  test "get steps - middle" do
+    #state, newStep, steps
+    state = %{step: 10, spr: 200}
+    newStep = 110
+    steps = 100
+
+    assert SMM.getSteps(state,newStep) == steps
+  end
+
+  test "get steps - over middle" do
+    #state, newStep, steps
+    state = %{step: 10, spr: 200}
+    newStep = 111
+    steps = 99
+
+    assert SMM.getSteps(state,newStep) == steps
+  end
+
+  test "get steps - under middle" do
+    #state, newStep, steps
+    state = %{step: 10, spr: 200}
+    newStep = 109
+    steps = 99
+
+    assert SMM.getSteps(state,newStep) == steps
+  end
+end

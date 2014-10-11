@@ -1,0 +1,32 @@
+defmodule Asa.StepperMotorMovements do
+  def getNextStep(%{step: step, spr: spr} = state, dir) when step == 0 and dir == -1, do: spr
+  def getNextStep(%{step: step, spr: spr} = state, dir) when step == spr and dir == 1, do: 0
+  def getNextStep(%{step: step, spr: _spr} = state, dir), do: step + dir
+
+  def getDirection(%{step: step, spr: _spr}, newStep, steps) when step + steps == newStep, do: 1
+  def getDirection(%{step: step, spr: _spr}, newStep, steps) when step - steps == newStep, do: -1
+  def getDirection(%{step: step, spr: spr}, newStep, steps) when step + steps - spr == newStep, do: 1
+  def getDirection(%{step: step, spr: spr}, newStep, steps) when step - steps + spr == newStep, do: -1
+
+  def getSteps(%{step: step, spr: spr}, newStep) do
+    #Step 1: Get the "raw" difference.
+      #For example, given -528.2 and 740.0, this is 1268.2.
+      #(This is raw_diff = first > second ? first - second : second - first,
+      #or raw_diff = std::fabs(first - second).)
+
+    #Step 2: Subtract a multiple of 360.0 to get a value between 0.0 (inclusive) and 360.0 (exclusive).
+      #(This is mod_diff = std::fmod(raw_diff, 360.0).)
+
+    #Step 3: If this value is greater than 180.0, subtract it from 360.0.
+      #(This is dist = mod_diff > 180.0 ? 360.0 - mod_diff : mod_diff or dist = 180.0 - std::fabs(mod_diff - 180.0).)
+    abs(newStep - step)
+    |> _mod_diff(spr)
+    |> _shortestSteps(spr)
+  end
+
+  defp _mod_diff(val, spr) when val >= 0 and val <= spr, do: val
+  defp _mod_diff(val, spr) when val > spr, do: _mod_diff(spr, val - spr)
+  defp _mod_diff(val, spr) when val < 0, do: _mod_diff(spr, val + spr)
+  defp _shortestSteps(diff, spr) when diff > (spr / 2), do: spr - diff
+  defp _shortestSteps(diff, _spr), do: diff
+end
