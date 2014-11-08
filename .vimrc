@@ -82,6 +82,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-markdown' 
 Plugin 'jtratner/vim-flavored-markdown'
 
+Bundle 'jplaut/vim-arduino-ino'
 
 let g:airline_theme='luna' 
 let g:airline_powerline_fonts=1
@@ -121,11 +122,16 @@ augroup erlang
   au BufNewFile,BufRead *.erl setlocal shiftwidth=4
   au BufNewFile,BufRead *.erl setlocal softtabstop=4
   au BufNewFile,BufRead relx.config setlocal filetype=erlang
-  augroup END
+augroup END
 
 augroup elixir
   au!
   au FileType elixir noremap <buffer> <Leader>t :!mix test<cr>
+augroup END
+
+augroup arduino
+  au BufRead,BufNewFile *.pde set filetype=arduino
+  au BufRead,BufNewFile *.ino set filetype=arduino
 augroup END
 
 augroup vimrcEx
@@ -150,3 +156,4 @@ set secure " disable unsafe commands in local .vimrc files
 " Start scrolling 3 lines before the border
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set scrolloff=3
+xnoremap p pgvy
