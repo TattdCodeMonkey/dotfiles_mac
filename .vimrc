@@ -56,24 +56,52 @@ set encoding=utf-8
 
 " Status bar
 set laststatus=2
+
+" Turn mouse off
+set mouse=
+set mouse=""
 """""""""""""""""""""""""""""""""""""""
 " VUNDLE BITS
 """""""""""""""""""""""""""""""""""""""
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'	" Required
 
 " Bundles here
+" NERD Tree
+Plugin 'scrooloose/nerdtree'
+
 " Color / Theme plugins
 Plugin 'flazz/vim-colorschemes'
 Plugin 'altercation/vim-colors-solarized' " New line!!
 Bundle 'tomasr/molokai'
 
 " Language specific plugins
+""""""" Elixir
 Plugin 'elixir-lang/vim-elixir'
+
+""""""" JavaScript
+Plugin 'claco/jasmine.vim'
+Plugin 'elzr/vim-json'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'mxw/vim-jsx'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'Shutnik/jshint2.vim'
+""""""" Web Development (HTML/CSS/preprocessors/etc)
+Plugin 'aaronjensen/vim-sass-status'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'groenewege/vim-less'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'lukaszb/vim-web-indent'
+Plugin 'othree/html5.vim'
+Plugin 'tpope/vim-haml'
+
+""""""" Coffee Script
+Plugin 'kchmck/vim-coffee-script'
 
 " Tools
 Plugin 'bling/vim-airline'
@@ -116,6 +144,15 @@ colorscheme solarized
 
 set noshowmode
 
+augroup coffee
+  au!
+  au BufNewFile,BufRead *.coffee setlocal expandtab 
+  au BufNewFile,BufRead *.coffee setlocal tabstop=2
+  au BufNewFile,BufRead *.coffee setlocal shiftwidth=2
+  au BufNewFile,BufRead *.coffee setlocal softtabstop=2
+  au FileType coffee noremap <buffer> <Leader>t :!npm test<cr>
+augroup END
+
 augroup erlang
   au!
   au BufNewFile,BufRead *.erl setlocal tabstop=4
@@ -146,12 +183,31 @@ augroup END
 " Ack bits
 map <Leader>a :Ag
 
+" Map Ctrl+n to toggle nerd tree
+map <C-n> :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""
 " Enable per-project vimrcs
 """""""""""""""""""""""""""""""""""""""
 set exrc   " enable per-directory .vimrc files
 set secure " disable unsafe commands in local .vimrc files
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" tab settings 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" size of a hard tabstop
+set tabstop=2
 
+" size of an "indent"
+set shiftwidth=2
+
+" a combination of spaces and tabs are used to simulate tab stops at a width
+" other than the (hard)tabstop
+ set softtabstop=2
+
+" make "tab" insert indents instead of tabs at the beginning of a line
+set smarttab
+
+" always uses spaces instead of tab characters
+set expandtab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Start scrolling 3 lines before the border
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
