@@ -79,6 +79,16 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'altercation/vim-colors-solarized' " New line!!
 Bundle 'tomasr/molokai'
 
+""""""" General Programming
+" Syntax checking hacks for vim
+Plugin 'scrooloose/syntastic'
+
+" Color coding of pairs of parenthesis, braces and brackets
+Plugin 'kien/rainbow_parentheses.vim'
+
+" Comment Toggling
+Plugin 'scrooloose/nerdcommenter'
+
 " Language specific plugins
 """"""" Elixir
 Plugin 'elixir-lang/vim-elixir'
@@ -91,6 +101,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Shutnik/jshint2.vim'
+
 """"""" Web Development (HTML/CSS/preprocessors/etc)
 Plugin 'aaronjensen/vim-sass-status'
 Plugin 'cakebaker/scss-syntax.vim'
@@ -102,6 +113,12 @@ Plugin 'tpope/vim-haml'
 
 """"""" Coffee Script
 Plugin 'kchmck/vim-coffee-script'
+
+""""""" Python
+" PyTest Support
+Plugin 'alfredodeza/pytest.vim'
+" JEDI, Code cmopletion for python
+Plugin 'davidhalter/jedi-vim'
 
 " Tools
 Plugin 'bling/vim-airline'
@@ -163,9 +180,11 @@ augroup elixir
   au FileType elixir noremap <buffer> <Leader>t :!mix test<cr>
 augroup END
 
-augroup arduino
-  au BufRead,BufNewFile *.pde set filetype=arduino
-  au BufRead,BufNewFile *.ino set filetype=arduino
+augroup python
+  au!
+  au BufNewFile,BufRead *.py setlocal tabstop=4
+  au BufNewFile,BufRead *.py setlocal shiftwidth=4
+  au BufNewFile,BufRead *.py setlocal softtabstop=4
 augroup END
 
 augroup vimrcEx
