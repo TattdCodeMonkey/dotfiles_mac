@@ -101,6 +101,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Shutnik/jshint2.vim'
+Plugin 'moll/vim-node.git'
 
 """"""" Web Development (HTML/CSS/preprocessors/etc)
 Plugin 'aaronjensen/vim-sass-status'
