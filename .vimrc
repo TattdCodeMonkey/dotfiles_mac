@@ -107,10 +107,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator' 
 Plugin 'mileszs/ack.vim'
-Plugin 'tpope/vim-markdown' 
-Plugin 'jtratner/vim-flavored-markdown'
-
-Bundle 'jplaut/vim-arduino-ino'
+Plugin 'benmills/vimux'
 
 let g:airline_theme='luna' 
 let g:airline_powerline_fonts=1
