@@ -120,6 +120,8 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'alfredodeza/pytest.vim'
 " JEDI, Code cmopletion for python
 Plugin 'davidhalter/jedi-vim'
+" PEP 8
+Plugin 'nvie/vim-flake8'
 
 " Tools
 Plugin 'bling/vim-airline'

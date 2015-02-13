@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # z
-. ~/bin/z/z.sh
+. /usr/local/Cellar/z/1.8/etc/profile.d/z.sh 
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -48,7 +48,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,3 +81,6 @@ export PATH="/Users/rcntn83/.rvm/gems/ruby-1.9.3-p484/bin:/Users/rcntn83/.rvm/ge
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
