@@ -112,8 +112,8 @@ Plugin 'lukaszb/vim-web-indent'
 Plugin 'othree/html5.vim'
 Plugin 'tpope/vim-haml'
 
-""""""" Coffee Script
-Plugin 'kchmck/vim-coffee-script'
+""""""" Rust 
+Plugin 'rust-lang/rust.vim'
 
 """"""" Python
 " PyTest Support
@@ -161,13 +161,12 @@ colorscheme solarized
 
 set noshowmode
 
-augroup coffee
+augroup rust
   au!
-  au BufNewFile,BufRead *.coffee setlocal expandtab 
-  au BufNewFile,BufRead *.coffee setlocal tabstop=2
-  au BufNewFile,BufRead *.coffee setlocal shiftwidth=2
-  au BufNewFile,BufRead *.coffee setlocal softtabstop=2
-  au FileType coffee noremap <buffer> <Leader>t :!npm test<cr>
+  au BufNewFile,BufRead *.rs set filetype=rust
+  au FileType rust noremap <buffer> <Leader>c :!cargo build<cr>
+  au FileType rust noremap <buffer> <Leader>r :!cargo run<cr>
+  au FileType rust noremap <buffer> <Leader>t :!cargo test<cr>
 augroup END
 
 augroup erlang
@@ -180,7 +179,10 @@ augroup END
 
 augroup elixir
   au!
+  au BufNewFile,BufRead *.ex set filetype=elixir
+  au BufNewFile,BufRead *.exs set filetype=elixir
   au FileType elixir noremap <buffer> <Leader>t :!mix test<cr>
+  au FileType elixir noremap <buffer> <Leader>c :!mix compile<cr>
 augroup END
 
 augroup python
