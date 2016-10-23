@@ -60,6 +60,12 @@ set laststatus=2
 " Turn mouse off
 set mouse=
 set mouse=""
+" Alchemist
+let g:alchemist#elixir_erlang_src = '/usr/local/share/src'
+
+" Enable backspace in insert
+set backspace=indent,eol,start
+
 """""""""""""""""""""""""""""""""""""""
 " VUNDLE BITS
 """""""""""""""""""""""""""""""""""""""
@@ -89,9 +95,13 @@ Plugin 'kien/rainbow_parentheses.vim'
 " Comment Toggling
 Plugin 'scrooloose/nerdcommenter'
 
+" Code Completion
+Plugin 'Valloric/YouCompleteMe'
+
 " Language specific plugins
 """"""" Elixir
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'slashmili/alchemist.vim'
 
 """"""" JavaScript
 Plugin 'claco/jasmine.vim'
@@ -106,11 +116,9 @@ Plugin 'moll/vim-node.git'
 """"""" Web Development (HTML/CSS/preprocessors/etc)
 Plugin 'aaronjensen/vim-sass-status'
 Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'groenewege/vim-less'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'lukaszb/vim-web-indent'
 Plugin 'othree/html5.vim'
-Plugin 'tpope/vim-haml'
 
 """"""" Rust 
 Plugin 'rust-lang/rust.vim'
@@ -125,6 +133,7 @@ Plugin 'nvie/vim-flake8'
 
 " Tools
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator' 
 Plugin 'mileszs/ack.vim'
 Plugin 'benmills/vimux'
@@ -161,6 +170,17 @@ colorscheme solarized
 
 set noshowmode
 
+augroup elixir
+  au!
+  au BufNewFile,BufRead *.ex set filetype=elixir
+  au BufNewFile,BufRead *.exs set filetype=elixir
+  au BufNewFile,BufRead *.ex setlocal tabstop=2
+  au BufNewFile,BufRead *.ex setlocal shiftwidth=2
+  au BufNewFile,BufRead *.ex setlocal softtabstop=2
+  au FileType elixir noremap <buffer> <Leader>t :!mix test<cr>
+  au FileType elixir noremap <buffer> <Leader>c :!mix compile<cr>
+augroup END
+
 augroup rust
   au!
   au BufNewFile,BufRead *.rs set filetype=rust
@@ -175,14 +195,6 @@ augroup erlang
   au BufNewFile,BufRead *.erl setlocal shiftwidth=4
   au BufNewFile,BufRead *.erl setlocal softtabstop=4
   au BufNewFile,BufRead relx.config setlocal filetype=erlang
-augroup END
-
-augroup elixir
-  au!
-  au BufNewFile,BufRead *.ex set filetype=elixir
-  au BufNewFile,BufRead *.exs set filetype=elixir
-  au FileType elixir noremap <buffer> <Leader>t :!mix test<cr>
-  au FileType elixir noremap <buffer> <Leader>c :!mix compile<cr>
 augroup END
 
 augroup python
