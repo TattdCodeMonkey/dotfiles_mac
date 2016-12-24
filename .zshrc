@@ -2,15 +2,11 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # z
-. /usr/local/Cellar/z/1.8/etc/profile.d/z.sh 
+. ~/bin/z/z.sh 
 
 # nvm
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
-
-# virtualenv
-export WORKON_HOME=~/.virtualenvssource 
-source /usr/local/bin/virtualenvwrapper.sh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -43,30 +39,11 @@ fi
 # ssh
 export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-##########################################################
-# Local Emma paths
-##########################################################
-export LOCALEMMA_EMMA_BASE_DIR=$HOME/dev/emma/
-export LOCALEMMA_EMMADMIN_BASE_DIR=$HOME/dev/emmadmin/
-export LOCALEMMA_AUDIENCE_BASE_DIR=$HOME/dev/
-
 ##########################################################
 # mysql aliases
 ##########################################################
 alias start_mysql='sudo /usr/local/mysql/bin/mysqld_safe &'
 alias stop_mysql='sudo /usr/local/mysql/bin/mysqladmin shutdown'
-
-##########################################################
-# Docker 
-##########################################################
-#export DOCKER_HOST=tcp://192.168.99.100:2376
-#export DOCKER_CERT_PATH=/Users/rnorris/.docker/machine/machines/dinghy
-#export DOCKER_TLS_VERIFY=1
-#export DOCKER_MACHINE_NAME=dinghy
-eval $(dinghy shellinit)
 
 ##########################################################
 # Atom 
@@ -112,25 +89,5 @@ alias grmstale="git branch -a --merged | grep -v 'remotes/' | grep -v '\*' | gre
 ##########################################################
 alias clr="clear"
 alias cleanpyc='find . -type f -name "*.pyc" -delete'
-alias yolo="rm -rf node_modules/ && npm install"
+alias sigh="rm -rf node_modules/ && npm install"
 
-#  LOCALEMMA_PATH
-export PATH="$PATH:/Users/rnorris/dev/LocalEmma/bin"
-
-# LOCALEMMA lemma zsh completion
-fpath=(/Users/rnorris/dev/LocalEmma/bin $fpath)
-autoload -U compinit
-compinit
-export PATH="/usr/local/sbin:$PATH"
-if [[ -s "${ZDOTDIR:-$HOME}/.dinghyenv" ]]; then
-    source "${ZDOTDIR:-$HOME}/.dinghyenv"
-fi
-if [[ -s "${ZDOTDIR:-$HOME}/.docker-commands.sh" ]]; then
-    source "${ZDOTDIR:-$HOME}/.docker-commands.sh"
-fi
-if [[ -s "${ZDOTDIR:-$HOME}/.dinghyenv" ]]; then
-    source "${ZDOTDIR:-$HOME}/.dinghyenv"
-fi
-if [[ -s "${ZDOTDIR:-$HOME}/.docker-commands.sh" ]]; then
-    source "${ZDOTDIR:-$HOME}/.docker-commands.sh"
-fi
