@@ -78,13 +78,17 @@ call vundle#rc()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'	" Required
 
-" Bundles here
 " NERD Tree
 Plugin 'scrooloose/nerdtree'
 
 " Color / Theme plugins
 Plugin 'flazz/vim-colorschemes'
 Plugin 'altercation/vim-colors-solarized' " New line!!
+
+" Tools
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'mileszs/ack.vim'
 
 """"""" General Programming
 " Syntax checking hacks for vim
@@ -121,9 +125,6 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'lukaszb/vim-web-indent'
 Plugin 'othree/html5.vim'
 
-""""""" Rust 
-Plugin 'rust-lang/rust.vim'
-
 """"""" Python
 " PyTest Support
 Plugin 'alfredodeza/pytest.vim'
@@ -131,13 +132,6 @@ Plugin 'alfredodeza/pytest.vim'
 Plugin 'davidhalter/jedi-vim'
 " PEP 8
 Plugin 'nvie/vim-flake8'
-
-" Tools
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'christoomey/vim-tmux-navigator' 
-Plugin 'mileszs/ack.vim'
-Plugin 'benmills/vimux'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -189,14 +183,6 @@ augroup elixir
   au FileType elixir noremap <buffer> <Leader>c :!mix compile<cr>
 augroup END
 
-augroup rust
-  au!
-  au BufNewFile,BufRead *.rs set filetype=rust
-  au FileType rust noremap <buffer> <Leader>c :!cargo build<cr>
-  au FileType rust noremap <buffer> <Leader>r :!cargo run<cr>
-  au FileType rust noremap <buffer> <Leader>t :!cargo test<cr>
-augroup END
-
 augroup erlang
   au!
   au BufNewFile,BufRead *.erl setlocal tabstop=4
@@ -222,7 +208,7 @@ augroup vimrcEx
 augroup END
 
 " Ack bits
-map <Leader>a :Ag
+map <Leader>a :Ack
 
 " Map Ctrl+n to toggle nerd tree
 map <C-n> :NERDTreeToggle<CR>
