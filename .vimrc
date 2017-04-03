@@ -1,5 +1,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set ai                        " set auto-indenting
+
 
 """""""""""""""""""""""""""""""""""""""
 " BACKUP / TMP FILES
@@ -83,7 +85,6 @@ Plugin 'scrooloose/nerdtree'
 " Color / Theme plugins
 Plugin 'flazz/vim-colorschemes'
 Plugin 'altercation/vim-colors-solarized' " New line!!
-Bundle 'tomasr/molokai'
 
 """"""" General Programming
 " Syntax checking hacks for vim
@@ -138,6 +139,10 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'mileszs/ack.vim'
 Plugin 'benmills/vimux'
 
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 let g:airline_theme='luna' 
 let g:airline_powerline_fonts=1
 
@@ -150,23 +155,26 @@ filetype plugin indent on    " required
 set number		" Show line numbers
 set ruler
 set cursorline		"highlight the current line
-" set cuc cul		"highlight active column
+set hlsearch
+set incsearch
+set showmatch
+set ignorecase
+set smartcase
 
 " Show trailing whitespace and spaces before a tab:
-" :highlight ExtraWhitespace ctermbg=red guibg=red
-" :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
-"
-" augroup markdown
-"   au!
-"     au BufReadPost *.md,*.markdown setlocal tw=80
-"       au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
-"       augroup END
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
+
+augroup markdown
+   au!
+   au BufReadPost *.md,*.markdown setlocal tw=80
+   au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
+augroup END
 
 syntax enable
 set background=dark
 let g:solarized_termcolors = 256
 colorscheme solarized
-"colorscheme molokai
 
 set noshowmode
 
