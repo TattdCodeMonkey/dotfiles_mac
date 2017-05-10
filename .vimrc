@@ -2,7 +2,6 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set ai                        " set auto-indenting
 
-
 """""""""""""""""""""""""""""""""""""""
 " BACKUP / TMP FILES
 """""""""""""""""""""""""""""""""""""""
@@ -62,11 +61,11 @@ set laststatus=2
 " Turn mouse off
 set mouse=
 set mouse=""
-" Alchemist
-let g:alchemist#elixir_erlang_src = '/usr/local/share/src'
 
 " Enable backspace in insert
 set backspace=indent,eol,start
+" Toggle Paste with F2
+set pastetoggle=<F2>
 
 """""""""""""""""""""""""""""""""""""""
 " VUNDLE BITS
@@ -183,6 +182,9 @@ augroup elixir
   au FileType elixir noremap <buffer> <Leader>c :!mix compile<cr>
 augroup END
 
+" Alchemist
+let g:alchemist#elixir_erlang_src = '/usr/local/share/src'
+
 augroup erlang
   au!
   au BufNewFile,BufRead *.erl setlocal tabstop=4
@@ -207,6 +209,9 @@ augroup vimrcEx
   au FileType elixir setl sw=2 sts=2 et iskeyword+=!,?
 augroup END
 
+augroup git
+  autocmd FileType gitcommit setlocal spell
+augroup END
 " Ack bits
 map <Leader>a :Ack
 
