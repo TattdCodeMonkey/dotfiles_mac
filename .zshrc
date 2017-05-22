@@ -91,3 +91,9 @@ alias clr="clear"
 alias cleanpyc='find . -type f -name "*.pyc" -delete'
 alias sigh="rm -rf node_modules/ && npm install"
 
+bindkey "^b" backward-word
+bindkey "^w" forward-word
+bindkey "^a" beginning-of-line
+bindkey "^e" end-of-line
+
+
