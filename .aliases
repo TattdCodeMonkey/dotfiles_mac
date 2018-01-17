@@ -1,0 +1,36 @@
+##########################################################
+# Git bits
+##########################################################
+alias gstat="git status"
+alias gadd="git add"
+alias gco="git checkout"
+alias gcob="git checkout -b"
+alias gca="git commit --amend"
+alias gpo="git push --set-upstream origin"
+
+alias gcstale="git branch -a --merged | grep -v 'remotes/' | grep -v '\*' | grep -v master | wc -l"
+alias grmstale="git branch -a --merged | grep -v 'remotes/' | grep -v '\*' | grep -v master | xargs git branch -D"
+
+##########################################################
+# Misc. bits
+##########################################################
+alias clr="clear"
+alias cleanpyc='find . -type f -name "*.pyc" -delete'
+alias sigh="rm -rf node_modules/ && npm install"
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
+
+# Get week number
+alias week='date +%V'
+
+# IP addresses
+alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="sudo ifconfig | grep -Eo 'inet (addr:)?([0-9]*\\.){3}[0-9]*' | grep -Eo '([0-9]*\\.){3}[0-9]*' | grep -v '127.0.0.1'"
+alias ips="sudo ifconfig -a | grep -o 'inet6\\? \\(addr:\\)\\?\\s\\?\\(\\(\\([0-9]\\+\\.\\)\\{3\\}[0-9]\\+\\)\\|[a-fA-F0-9:]\\+\\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
