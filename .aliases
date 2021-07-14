@@ -11,26 +11,24 @@ alias gpo="git push --set-upstream origin"
 alias gcstale="git branch -a --merged | grep -v 'remotes/' | grep -v '\*' | grep -v master | wc -l"
 alias grmstale="git branch -a --merged | grep -v 'remotes/' | grep -v '\*' | grep -v master | xargs git branch -D"
 
+alias gpf="git push --force-with-lease"
+alias grb="git fetch && git rebase -S origin/master"
+
 ##########################################################
 # Misc. bits
 ##########################################################
-alias clr="clear"
-alias cleanpyc='find . -type f -name "*.pyc" -delete'
-alias sigh="rm -rf node_modules/ && npm install"
+
+alias k=kubectl
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
 
-# Get week number
-alias week='date +%V'
+alias python=python3
+alias pip=pip3
 
-# IP addresses
-alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="sudo ifconfig | grep -Eo 'inet (addr:)?([0-9]*\\.){3}[0-9]*' | grep -Eo '([0-9]*\\.){3}[0-9]*' | grep -v '127.0.0.1'"
-alias ips="sudo ifconfig -a | grep -o 'inet6\\? \\(addr:\\)\\?\\s\\?\\(\\(\\([0-9]\\+\\.\\)\\{3\\}[0-9]\\+\\)\\|[a-fA-F0-9:]\\+\\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
+# clean node_modules recursively
+alias clean-nm="find . -name 'node_modules' -type d -prune"
