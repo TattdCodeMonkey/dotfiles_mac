@@ -87,7 +87,6 @@ Plugin 'altercation/vim-colors-solarized' " New line!!
 " Tools
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'mileszs/ack.vim'
 
 """"""" General Programming
 " Syntax checking hacks for vim
@@ -95,12 +94,6 @@ Plugin 'scrooloose/syntastic'
 
 " Color coding of pairs of parenthesis, braces and brackets
 Plugin 'kien/rainbow_parentheses.vim'
-
-" Comment Toggling
-Plugin 'scrooloose/nerdcommenter'
-
-" Code Completion
-Plugin 'Valloric/YouCompleteMe'
 
 " Language specific plugins
 """"""" Elixir
