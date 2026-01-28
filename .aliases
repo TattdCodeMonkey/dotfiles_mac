@@ -7,6 +7,7 @@ alias gcob="git checkout -b"
 alias gca="git commit -S --amend --no-edit"
 alias gpo="git push --set-upstream origin"
 alias gpr="git pull --rebase"
+alias gcow="git worktree add -b '$1' '../$1' HEAD"
 
 alias gcstale="git branch -a --merged | grep -v 'remotes/' | grep -v '\*' | grep -v main | grep -v '\b[0-9]\+\.[0-9x]\+\b' | wc -l"
 alias grmstale="git branch -a --merged | grep -v 'remotes/' | grep -v '\*' | grep -v main | grep -v '\b[0-9]\+\.[0-9x]\+\b' | xargs git branch -D"
@@ -19,6 +20,7 @@ alias grb="git fetch && git rebase -S origin/master"
 ##########################################################
 
 alias k=kubectl
+alias t=talosctl
 alias cat=bat
 
 # Easier navigation: .., ..., ...., ....., ~ and -
